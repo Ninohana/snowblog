@@ -20,29 +20,29 @@
     <div class="item-foot">
       <span class="article-copyright">
         <i class="icon icon-time">
-          {{ article.copyright.time }}
+          2020-10-12
         </i>
         &nbsp;
         <i class="icon icon-author">
-          {{ article.copyright.author }}
+          {{ article.author }}
         </i>
       </span>
       <span class="article-taglist">
         <a v-for="tag in article.tagList" href="#" class="tag">
-          {{ tag.name }}
+          {{ articel.tag }}
         </a>
       </span>
       <span class="article-info">
         <a href="#" class="info-a">
-          <i class="icon-thumbup">{{ article.info.like }}</i>
+          <i class="icon-thumbup">{{ article.like }}</i>
         </a>
         &nbsp;
         <a href="#" class="info-a">
-          <i class="icon-eye">{{ article.info.eye }}</i>
+          <i class="icon-eye">{{ article.eye }}</i>
         </a>
         &nbsp;
         <a href="#" class="info-a">
-          <i class="icon-comment">{{ article.info.comment }}</i>
+          <i class="icon-comment">{{ article.comment }}</i>
         </a>
       </span>
     </div>
