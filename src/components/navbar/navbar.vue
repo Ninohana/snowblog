@@ -2,18 +2,18 @@
   <div class="header">
     <div class="navbar">
       <div class="navbar-logo navbar-left">
-        <a href="#">
-          <img src="../assets/logo.svg" alt="">
+        <a href="/">
+          <img src="../../assets/logo.png" alt="">
           Snowiest的博客
         </a>
       </div>
       <div class="navbar-nav navbar-left">
         <ul>
-          <li v-for="item in navList">
-            <a :href="item.href" class="nav-item">
-              <img :src="item.icon" alt="" class="nav-icon">
-              {{ item.name }}
-            </a>
+          <li v-for="nav in navList">
+            <router-link :to="nav.href" class="nav-item">
+              <img :src="nav.icon" alt="" class="nav-icon">
+              {{ nav.name }}
+            </router-link>
           </li>
         </ul>
       </div>
@@ -21,12 +21,12 @@
       <div class="navbar-nav navbar-right">
         <ul>
           <li>
-            <a href="#" class="nav-item" disabled style="color: #888;">
+            <a class="nav-item" :class="{ disabled: true }">
               Sign in
             </a>
           </li>
           <li>
-            <a href="#" class="nav-item" disabled style="color: #888;">
+            <a class="nav-item" :class="{ disabled: true }">
               注册
             </a>
           </li>
@@ -38,13 +38,21 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      navList: {
+  import config from './config.json'
 
-      }
+  export default {
+    data: {
+      navList: []
     },
-    name: "navbar"
+    name: "navbar",
+    created() {
+      //渲染导航栏
+      this.navList = config.navList;
+      this.navList.forEach(nav => {
+        // 这里因为webpack的图片打包的原因，需要重新require一下图片的地址进行加载
+        nav.icon = require('../../' + nav.icon);
+      });
+    }
   }
 </script>
 
@@ -123,6 +131,10 @@
   .nav-item:link {
     text-decoration: none;
     color: #333;
+  }
+
+  .nav-item.disabled {
+    color: #888;
   }
 
   .nav-icon {

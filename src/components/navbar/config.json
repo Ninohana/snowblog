@@ -1,0 +1,13 @@
+{
+  "navList": [{
+      "name": "主页",
+      "href": "/",
+      "icon": "assets/img/icon/home.svg"
+    },
+    {
+      "name": "博客",
+      "href": "/blog",
+      "icon": "assets/img/icon/logo.svg"
+    }
+  ]
+}

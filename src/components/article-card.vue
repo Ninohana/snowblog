@@ -28,8 +28,8 @@
         </i>
       </span>
       <span class="article-taglist">
-        <a v-for="tag in article.tagList" href="#" class="tag">
-          {{ articel.tag }}
+        <a v-for="tag in article.tags" :key="tag.name" :title="tag.desc" class="tag">
+          {{ tag.name }}
         </a>
       </span>
       <span class="article-info">
@@ -114,6 +114,7 @@
     background-color: #fff;
     border-left: 6px solid transparent;
     box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, .05);
+    overflow: hidden;
   }
 
   .content-item:hover {
@@ -141,7 +142,8 @@
   }
 
   .item-right p {
-    margin-top: 20px;
+    margin-top: 15px;
+    font-size: 13px;
   }
 
   .item-right p,
@@ -152,7 +154,8 @@
 
   .item-title a h1 {
     color: #666;
-    font-size: 24px;
+    font-size: 22px;
+    font-weight: 500;
     line-height: unset;
     transition: all .4s ease;
   }
