@@ -78,7 +78,7 @@
     min-height: 60px;
     position: fixed;
     background-color: #fff;
-    z-index: 9;
+    z-index: 9999;
   }
 
   .navbar-left {

@@ -76,7 +76,7 @@
 <style scoped>
   /* 翻页 */
   .content-pager {
-    margin: -5px 20px 10px;
+    margin: 0px 20px 10px;
   }
 
   .content-pager ul,
