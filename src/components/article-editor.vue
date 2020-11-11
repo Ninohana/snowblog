@@ -1,20 +1,22 @@
 <template>
   <div class="article-editor">
     <div class="editor-header">
-      <div>
-        <!-- 标题： -->
+      <div class="editor">
+        <label for="title">文章标题：</label>
         <input
+          id="title"
           type="text"
-          class="article-title"
           :v-model="title"
-          placeholder="文章标题"
+          placeholder="此处输入文章标题"
         />
-        <!-- 简介： -->
+      </div>
+      <div class="editor">
+        <label for="summary">文章简介：</label>
         <input
+          id="summary"
           type="text"
-          class="article-summary"
           :v-model="summary"
-          placeholder="文章简介"
+          placeholder="此处输入文章简介"
         />
       </div>
     </div>
@@ -29,7 +31,30 @@
         ref="md"
       />
     </div>
-    <div class="editor-footer"></div>
+    <div class="editor-footer">
+      <div class="editor">
+        <label for="cover">封面链接：</label>
+        <input
+          id="cover"
+          type="text"
+          :v-model="cover"
+          placeholder="此处填写封面链接"
+        />
+      </div>
+      <div class="selector">
+        文章标签：
+        <select name="tag" id="tag">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+      </div>
+      <div class="tbar">
+        <a class="button" @click="submit">提交</a>
+        <a class="button" @click="reset">清空</a>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -87,6 +112,7 @@ export default {
     return {
       title: "",
       summary: "",
+      cover: "",
     };
   },
   methods: {
@@ -102,10 +128,10 @@ export default {
     onSave(e) {
       api
         .uploadArticle(
-          "https://s1.ax1x.com/2020/10/29/BJSQPg.jpg",
-          "我是标题",
-          "我是简介",
-          "我是作者",
+          this.cover,
+          this.title,
+          this.summary,
+          "Admin",
           "",
           this.value
         )
@@ -116,6 +142,12 @@ export default {
         .catch((err) => {
           console.log("上传失败");
         });
+    },
+    submit() {
+      alert("submit!");
+    },
+    reset() {
+      alert("reset!");
     },
   },
 };
@@ -129,30 +161,59 @@ export default {
   /* min-height: 450px; */
 }
 
-.editor-header input,
-.editor-header textarea {
-  /* 取消默认样式 */
-  background: none;
-  outline: none;
-  border: none;
-
-  width: 99.2%;
-  padding-left: 10px;
-  border-radius: 5px;
+.editor {
+  display: flex;
+  width: 100%;
+  padding: 1px 10px;
+  border-radius: 2px;
+  box-shadow: 1px 1px 5px #ddd;
+  box-sizing: border-box;
+  line-height: 50px;
   background-color: #fff;
 }
 
-.article-title {
-  margin-bottom: 10px;
-  line-height: 60px;
-  font-size: 26px;
-  color: #333;
+.editor label {
+  flex-shrink: 0; /* 挤压不变形 */
+  font-weight: bold;
 }
 
-.article-summary {
-  margin-bottom: 15px;
+.editor input {
+  /* 清除默认样式 */
+  background: none;
+  outline: none;
+  border: none;
+  /* 自适应组件宽度 */
+  width: 100%;
+
   line-height: 50px;
-  font-size: 20px;
-  color: #555;
+  font-size: 16px;
+  font-weight: 300;
+  /* background: black; */
+}
+
+.editor-header div {
+  margin-bottom: 10px;
+}
+
+.editor-footer div {
+  margin-top: 10px;
+}
+
+.button {
+  padding: 10px 100px;
+  display: inline-block;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.button:hover {
+  background-color: #eee;
+}
+
+.tbar {
+  display: flex;
+  justify-content: space-between;
 }
 </style>
