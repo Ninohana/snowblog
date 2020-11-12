@@ -12,7 +12,7 @@ export default new Router({
 		component: article
 	},
 	{
-		path: "/editor",
+		path: "/editor-admin-mineself",
 		name: "article-editor",
 		component: articleEditor
 	}

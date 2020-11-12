@@ -4,11 +4,6 @@
       "name": "主页",
       "href": "/",
       "icon": "assets/img/icon/home.svg"
-    },
-    {
-      "name": "写博客",
-      "href": "/editor",
-      "icon": "assets/img/icon/logo.svg"
     }
   ]
 }

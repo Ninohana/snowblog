@@ -6,7 +6,7 @@
         <input
           id="title"
           type="text"
-          :v-model="title"
+          v-model="title"
           placeholder="此处输入文章标题"
         />
       </div>
@@ -15,7 +15,7 @@
         <input
           id="summary"
           type="text"
-          :v-model="summary"
+          v-model="summary"
           placeholder="此处输入文章简介"
         />
       </div>
@@ -37,7 +37,7 @@
         <input
           id="cover"
           type="text"
-          :v-model="cover"
+          v-model="cover"
           placeholder="此处填写封面链接"
         />
       </div>
@@ -125,7 +125,8 @@ export default {
     onChange(e) {
       console.log(e);
     },
-    onSave(e) {
+    onSave(e) {},
+    submit() {
       api
         .uploadArticle(
           this.cover,
@@ -142,9 +143,6 @@ export default {
         .catch((err) => {
           console.log("上传失败");
         });
-    },
-    submit() {
-      alert("submit!");
     },
     reset() {
       alert("reset!");
